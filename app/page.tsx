@@ -1,27 +1,16 @@
 import Image from "next/image";
-import Link from "next/link";
+
+import Features from "./features/page";
+import Pricing from "./pricing/page";
+import Sources from "./sources/page";
+
+import Navbar from "@/components/NavbarUI";
+import Footer from "@/components/FooterUI";
 
 export default function Home() {
   return (
     <main>
-      <header className="flex items-center justify-between px-8 py-4">
-        <Link href={"/"}>
-          <h1 className="font-semibold text-lg">Lead Forge Demo.</h1>
-        </Link>
-
-        <nav className="flex items-center gap-8 px-8 py-3 bg-gray-200 rounded-full">
-          {["Home", "Features", "Sources", "Pricing", "Help"].map((item) => (
-            <a key={item} href="#" className="text-sm font-medium text-gray-700 hover:text-black">
-              {item}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex gap-3">
-          <button className="px-5 py-2 bg-black text-white rounded-md">Get Started</button>
-          <button className="px-5 py-2 border rounded-md">See Demo</button>
-        </div>
-      </header>
+      <Navbar />
 
       <div className="flex items-center px-8 py-20 gap-10">
         <div className="flex-1 space-y-5">
@@ -36,59 +25,32 @@ export default function Home() {
         </div>
 
         <figure className="flex-1 flex justify-center">
-          <Image height={360} width={360} src="/company.svg" alt="Lead generation illustration" />
+          <Image height={560} width={560} src="/company.svg" alt="Lead generation illustration" />
         </figure>
       </div>
-      <footer className="px-8 py-16 bg-gray-100">
-        <div className="grid grid-cols-4 gap-10">
-          {/* Brand */}
-          <div>
-            <h2 className="font-semibold text-lg">LeadForge</h2>
-            <p className="text-sm text-gray-600 mt-2 max-w-xs">Turning website traffic into qualified business leads.</p>
-          </div>
+      <div className="flex flex-col items-center px-8 py-20 gap-6 bg-gray-300">
+        <h2 className="text-2xl font-semibold">Trusted by 100+ Growing Businesses</h2>
 
-          {/* Product */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Product</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li>Features</li>
-              <li>Lead Capture</li>
-              <li>Integrations</li>
-              <li>Analytics</li>
-              <li>Pricing</li>
-            </ul>
-          </div>
+        <p className="text-gray-600 text-center max-w-md">Teams across industries rely on LeadForge to capture and convert high-quality leads.</p>
 
-          {/* Resources */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Resources</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li>Help Center</li>
-              <li>Documentation</li>
-              <li>Case Studies</li>
-              <li>API Reference</li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Legal</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li>Privacy Policy</li>
-              <li>Terms of Service</li>
-              <li>Cookie Policy</li>
-            </ul>
-          </div>
+        <div className="flex flex-wrap justify-center gap-6 mt-6 text-sm font-medium text-stone-600">
+          {["Northlane Systems", "Bluecrest Digital", "Atlas Ridge", "Virex Solutions", "LuminaWorks", "Stonefield Labs", "HexaCore", "Brightscale", "Ironleaf", "Cloudhaven", "NovaReach", "Peakflow"].map((e) => (
+            <span className="" key={e}>
+              {e}
+            </span>
+          ))}
         </div>
+      </div>
+      <div className="flex justify-center items-center p-5">
+        <h2 className="text-3xl font-bold">Built to Solve Real Lead Problems</h2>
+      </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 flex items-center justify-between text-sm text-gray-500">
-          <p>© 2026 LeadForge Demo. All rights reserved.</p>
+      <Features />
+      <Pricing />
+      <Sources />
 
-          <Link href="https://github.com/chrlesdev" className="hover:text-black transition">
-            GitHub
-          </Link>
-        </div>
+      <footer>
+        <Footer />
       </footer>
     </main>
   );
