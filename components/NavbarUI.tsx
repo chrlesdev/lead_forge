@@ -19,13 +19,13 @@ export default function Navbar() {
           <div className="bg-black text-white p-1.5 rounded-lg group-hover:bg-gray-800 transition-colors">
             <Hammer className="w-5 h-5" />
           </div>
-          <span className="font-bold text-lg tracking-tight">Lead Forge Demo</span>
+          <span className="font-bold text-lg tracking-tight">Lead Forge</span>
         </Link>
 
         {/* Desktop Navigation (Pill) */}
         <nav className="hidden md:flex items-center gap-1 p-1 bg-gray-100/50 border border-gray-200 rounded-full">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="px-4 py-1.5 text-sm font-medium text-gray-600 rounded-full transition-all duration-200 hover:text-black hover:bg-white hover:shadow-sm">
+            <Link key={link.name} href={link.href} className="px-4 py-1.5 text-sm font-medium text-gray-600 rounded-full transition-all duration-200 hover:text-black hover:bg-gray-300 hover:shadow-sm">
               {link.name}
             </Link>
           ))}

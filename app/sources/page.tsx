@@ -1,7 +1,13 @@
+import SourcesUI from "@/components/SourcesUI";
+import Navbar from "@/components/NavbarUI";
+import Footer from "@/components/FooterUI";
+
 export default function Sources() {
   return (
     <>
-      <h1>Sources</h1>
+      <Navbar />
+      <SourcesUI />
+      <Footer />
     </>
   );
 }

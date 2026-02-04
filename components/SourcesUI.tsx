@@ -1,0 +1,76 @@
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+
+export default function SourcesUI() {
+  const cards = [
+    { header: "Organic Search", image: "/organicSearch.svg" },
+    { header: "Paid Advertising", image: "/payment.svg" },
+    { header: "Social Media", image: "/social.svg" },
+    { header: "Referrals", image: "/referals.svg" },
+    { header: "Direct Traffic", image: "/traffic.svg" },
+    { header: "Campaign Links", image: "/campaign.svg" },
+  ];
+
+  return (
+    <main className="bg-white">
+      {/* Hero Section / Point 1 & 2 (Alternating) */}
+      <section className="px-8 py-24 max-w-7xl mx-auto space-y-32">
+        {/* Point 1: Text Left, Image Right */}
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          <div className="flex-1 space-y-6">
+            <Badge variant="secondary" className="bg-blue-50 text-blue-700 hover:bg-blue-50">
+              Attribution
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900">Know Where Every Lead Comes From</h2>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              Every lead has a story. LeadForge tracks how visitors arrive at your website — whether through ads, search engines, or direct visits — so you always know exactly what&apos;s working and what&apos;s not.
+            </p>
+          </div>
+          <div className="flex-1 bg-slate-50 rounded-3xl p-8 border border-slate-100 shadow-sm">
+            <Image height={400} width={500} alt="Source tracking" src="/sources-hero.svg" className="w-full h-auto" />
+          </div>
+        </div>
+
+        {/* Point 2: Image Left, Text Right */}
+        <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+          <div className="flex-1 space-y-6">
+            <Badge variant="secondary" className="bg-orange-50 text-orange-700 hover:bg-orange-50">
+              Strategy
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900">Stop Guessing. Start Focusing.</h2>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              When lead sources are unclear, marketing decisions become guesswork. LeadForge removes uncertainty by showing which channels bring meaningful engagement, allowing teams to focus time and budget where it actually pays off.
+            </p>
+          </div>
+          <div className="flex-1 bg-slate-50 rounded-3xl p-8 border border-slate-100 shadow-sm">
+            <Image height={400} width={500} alt="Data focus" src="/focus.svg" className="w-full h-auto" />
+          </div>
+        </div>
+      </section>
+
+      {/* Point 3: The Category Grid */}
+      <section className="px-8 py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl font-bold text-slate-900">Common Lead Sources We Track</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">LeadForge automatically categorizes leads based on their entry point without manual setup or complex tools.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {cards.map((item, index) => (
+              <Card key={index} className="group border border-slate-200 bg-white hover:border-blue-500 hover:shadow-md transition-all duration-300">
+                <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                  <div className="w-16 h-16 flex items-center justify-center bg-slate-50 rounded-2xl group-hover:bg-blue-50 transition-colors">
+                    <Image height={40} width={40} alt={item.header} src={item.image} />
+                  </div>
+                  <h3 className="text-sm font-semibold text-slate-700 group-hover:text-slate-900 leading-tight">{item.header}</h3>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
