@@ -8,7 +8,6 @@ export default function Navbar() {
     { name: "Features", href: "/features" },
     { name: "Pricing", href: "/pricing" },
     { name: "Sources", href: "/sources" },
-    { name: "Help", href: "/help" },
   ];
 
   return (
@@ -54,7 +53,7 @@ export default function Navbar() {
                 </SheetHeader>
                 <div className="flex flex-col gap-4 mt-10 p-6 ">
                   {navLinks.map((link) => (
-                    <Link key={link.name} href={link.href} className=" text-lg font-medium text-gray-600 hover:text-black hover:border-b-2 border-black w-fit pb-2">
+                    <Link key={link.name} href={link.href} className=" text-lg font-medium text-gray-800 hover:text-black hover:border-b-2 border-black w-fit pb-2">
                       {link.name}
                     </Link>
                   ))}

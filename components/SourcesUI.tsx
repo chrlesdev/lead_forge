@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
@@ -14,9 +14,7 @@ export default function SourcesUI() {
 
   return (
     <main className="bg-white">
-      {/* Hero Section / Point 1 & 2 (Alternating) */}
       <section className="px-8 py-24 max-w-7xl mx-auto space-y-32">
-        {/* Point 1: Text Left, Image Right */}
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="flex-1 space-y-6">
             <Badge variant="secondary" className="bg-blue-50 text-blue-700 hover:bg-blue-50">
@@ -32,7 +30,6 @@ export default function SourcesUI() {
           </div>
         </div>
 
-        {/* Point 2: Image Left, Text Right */}
         <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
           <div className="flex-1 space-y-6">
             <Badge variant="secondary" className="bg-orange-50 text-orange-700 hover:bg-orange-50">
@@ -49,7 +46,6 @@ export default function SourcesUI() {
         </div>
       </section>
 
-      {/* Point 3: The Category Grid */}
       <section className="px-8 py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
