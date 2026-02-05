@@ -65,11 +65,11 @@ export default function Footer() {
   const sections = [
     {
       title: "Product",
-      links: ["Features", "Lead Capture", "Integrations", "Analytics", "Pricing"],
+      links: ["/", "/", "/", "/", "/"],
     },
     {
       title: "Resources",
-      links: ["Help Center", "Documentation", "Case Studies", "API Reference"],
+      links: ["/", "/", "/", "/"],
     },
   ];
 
@@ -120,7 +120,7 @@ export default function Footer() {
               </CardHeader>
               <CardContent className="space-y-3">
                 <Input placeholder="Email address" className="bg-white border-slate-200 focus-visible:ring-black" />
-                <Textarea placeholder="Your message" className="bg-white border-slate-200 focus-visible:ring-black min-h-[80px] resize-none" />
+                <Textarea placeholder="Your message" className="bg-white border-slate-200 focus-visible:ring-black min-h-[80] resize-none" />
                 <Button className="w-full bg-black text-white hover:bg-gray-800 transition-all group">
                   Send Message
                   <Send className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
