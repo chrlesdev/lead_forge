@@ -1,8 +1,45 @@
+"use client";
+import { useState, useEffect } from "react";
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge"; // If you have shadcn badge
+import { Skeleton } from "./ui/skeleton";
 
 export default function FeaturesUI() {
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section className="px-8 py-24 bg-white">
+        <div className="text-center mb-20 space-y-4">
+          <Skeleton className="h-12 w-1/2 mx-auto" />
+          <Skeleton className="h-6 w-1/3 mx-auto" />
+        </div>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="p-8 space-y-6 border border-slate-100 rounded-3xl bg-slate-50/50">
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-8 w-3/4" />
+              </div>
+              <Skeleton className="h-20 w-full" />
+              <Skeleton className="h-64 w-full rounded-xl" />
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-24 max-w-4xl mx-auto h-64 rounded-3xl">
+          <Skeleton className="w-full h-full rounded-3xl" />
+        </div>
+      </section>
+    );
+  }
   const cardItem = [
     {
       header: "Source Attribution",
@@ -36,16 +73,11 @@ export default function FeaturesUI() {
 
   return (
     <section className="px-8 py-24 bg-white">
-      {/* Header */}
       <div className="text-center mb-20">
-        <Badge variant="outline" className="mb-4 border-black/10 px-3 py-1">
-          Features
-        </Badge>
         <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Everything You Need to Scale</h2>
         <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">LeadForge provides the essential tools businesses need to capture, qualify, and manage inbound leads effectively.</p>
       </div>
 
-      {/* Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         {cardItem.map((item, index) => (
           <Card key={index} className="overflow-hidden border-none shadow-none bg-slate-50/50 group hover:bg-slate-50 transition-colors duration-300">
@@ -66,7 +98,6 @@ export default function FeaturesUI() {
         ))}
       </div>
 
-      {/* Bottom Callout */}
       <div className="mt-24 max-w-4xl mx-auto text-center p-12 rounded-3xl bg-slate-900 text-white">
         <h2 className="text-3xl font-bold mb-4">Built to Grow With Your Business</h2>
         <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">LeadForge is intentionally simple to start using, but flexible enough to scale. The system adapts to your workflow without adding unnecessary complexity.</p>

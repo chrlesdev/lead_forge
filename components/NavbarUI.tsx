@@ -1,8 +1,19 @@
+"use client";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import Link from "next/link";
 import { Hammer, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Navbar() {
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Features", href: "/features" },
@@ -10,10 +21,40 @@ export default function Navbar() {
     { name: "Sources", href: "/sources" },
   ];
 
+  if (isLoading) {
+    return (
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
+        <div className="flex items-center justify-between px-8 py-4 max-w-7xl mx-auto">
+          <div className="flex items-center gap-2">
+            <Skeleton className="w-8 h-8 rounded-lg" />
+            <Skeleton className="h-5 w-24" />
+          </div>
+
+          <div className="hidden md:flex items-center gap-2 p-1 bg-gray-50 border border-gray-100 rounded-full px-2">
+            <Skeleton className="h-7 w-16 rounded-full" />
+            <Skeleton className="h-7 w-20 rounded-full" />
+            <Skeleton className="h-7 w-16 rounded-full" />
+            <Skeleton className="h-7 w-16 rounded-full" />
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex gap-3">
+              <Skeleton className="h-9 w-20 rounded-md" />
+              <Skeleton className="h-9 w-28 rounded-lg" />
+            </div>
+
+            <div className="md:hidden">
+              <Skeleton className="h-10 w-10 rounded-lg" />
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
       <div className="flex items-center justify-between px-8 py-4 max-w-7xl mx-auto">
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="bg-black text-white p-1.5 rounded-lg group-hover:bg-gray-800 transition-colors">
             <Hammer className="w-5 h-5" />

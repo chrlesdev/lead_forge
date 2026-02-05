@@ -1,8 +1,57 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+"use client";
+
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
 export default function PricingUI() {
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section className="bg-slate-50 py-24 px-8">
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          <div className="text-center mb-16 space-y-4 w-full">
+            <Skeleton className="h-12 w-1/2 mx-auto" />
+            <Skeleton className="h-6 w-1/3 mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full items-start">
+            {[0, 1, 2].map((i) => (
+              <Card key={i} className={`p-8 space-y-8 bg-white ${i === 1 ? "scale-105 shadow-xl border-blue-100" : ""}`}>
+                <div className="space-y-3 text-center">
+                  <Skeleton className="h-6 w-24 mx-auto" />
+                  <Skeleton className="h-4 w-40 mx-auto" />
+                </div>
+
+                <div className="flex justify-center gap-2">
+                  <Skeleton className="h-12 w-24" />
+                </div>
+
+                <div className="space-y-4">
+                  {[...Array(5)].map((_, j) => (
+                    <div key={j} className="flex items-center gap-3">
+                      <Skeleton className="h-5 w-5 rounded-full" />
+                      <Skeleton className="h-4 w-full" />
+                    </div>
+                  ))}
+                </div>
+
+                <Skeleton className="h-12 w-full rounded-xl mt-4" />
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
   const pricing = [
     {
       header: "Starter",
@@ -55,7 +104,6 @@ export default function PricingUI() {
                   <span className="text-slate-500 font-medium">/mo</span>
                 </div>
 
-                {/* Features List */}
                 <ul className="w-full space-y-4 mt-4">
                   {item.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3 text-sm text-slate-600">

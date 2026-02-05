@@ -1,3 +1,7 @@
+"use client";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import Link from "next/link";
 import { Hammer, Globe, Send } from "lucide-react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
@@ -6,6 +10,56 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function Footer() {
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <footer className="bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-4 space-y-4">
+              <Skeleton className="h-8 w-40" />
+              <Skeleton className="h-4 w-64" />
+              <Skeleton className="h-4 w-52" />
+              <div className="flex gap-4 mt-6">
+                <Skeleton className="h-8 w-8 rounded-full" />
+                <Skeleton className="h-8 w-8 rounded-full" />
+              </div>
+            </div>
+
+            <div className="md:col-span-4 grid grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <Skeleton className="h-5 w-24" />
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-4 w-28" />
+                <Skeleton className="h-4 w-24" />
+              </div>
+              <div className="space-y-4">
+                <Skeleton className="h-5 w-24" />
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-4 w-28" />
+              </div>
+            </div>
+
+            <div className="md:col-span-4">
+              <div className="border border-slate-100 p-6 rounded-xl bg-slate-50/50 space-y-4">
+                <Skeleton className="h-5 w-32" />
+                <Skeleton className="h-10 w-full" />
+                <Skeleton className="h-20 w-full" />
+                <Skeleton className="h-10 w-full" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
   const currentYear = new Date().getFullYear();
 
   const sections = [

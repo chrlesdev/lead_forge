@@ -1,8 +1,17 @@
+"use client";
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
 export default function SourcesUI() {
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
   const cards = [
     { header: "Organic Search", image: "/organicSearch.svg" },
     { header: "Paid Advertising", image: "/payment.svg" },
@@ -11,6 +20,61 @@ export default function SourcesUI() {
     { header: "Direct Traffic", image: "/traffic.svg" },
     { header: "Campaign Links", image: "/campaign.svg" },
   ];
+
+  if (isLoading) {
+    return (
+      <main className="bg-white">
+        <section className="px-8 py-24 max-w-7xl mx-auto space-y-32">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="flex-1 space-y-6">
+              <Skeleton className="h-6 w-24 rounded-full" />
+              <Skeleton className="h-12 w-3/4" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-2/3" />
+              </div>
+            </div>
+            <div className="flex-1 w-full">
+              <Skeleton className="h-[350] w-full rounded-3xl" />
+            </div>
+          </div>
+
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+            <div className="flex-1 space-y-6">
+              <Skeleton className="h-6 w-24 rounded-full" />
+              <Skeleton className="h-12 w-3/4" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-2/3" />
+              </div>
+            </div>
+            <div className="flex-1 w-full">
+              <Skeleton className="h-[350] w-full rounded-3xl" />
+            </div>
+          </div>
+        </section>
+
+        <section className="px-8 py-24 bg-slate-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 space-y-4">
+              <Skeleton className="h-10 w-64 mx-auto" />
+              <Skeleton className="h-4 w-96 mx-auto" />
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i} className="p-6 flex flex-col items-center gap-4 bg-white border-none">
+                  <Skeleton className="w-16 h-16 rounded-2xl" />
+                  <Skeleton className="h-4 w-20" />
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="bg-white">
