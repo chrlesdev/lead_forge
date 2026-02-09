@@ -65,11 +65,11 @@ export default function Footer() {
   const sections = [
     {
       title: "Product",
-      links: ["/", "/", "/", "/", "/"],
+      links: ["Features", "Lead Capture", "Integrations", "Analytics", "Pricing"],
     },
     {
       title: "Resources",
-      links: ["/", "/", "/", "/"],
+      links: ["Help Center", "Case Studies", "Documentation", "API Reference"],
     },
   ];
 
