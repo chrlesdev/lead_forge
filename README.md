@@ -6,7 +6,7 @@ LeadForge Demo
 ---
 
 <div align="center">
-  <a href="https://lead-forge-ten.vercel.app/sources">
+  <a href="https://lead-forge-ten.vercel.app/sources" target="_blank">
     <img src="https://img.shields.io/badge/View_Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" />
   </a>
 </div>
